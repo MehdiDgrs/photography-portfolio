@@ -1,5 +1,5 @@
 .container {
-  padding: 0 2rem;
+  padding: 0 ;
 }
 
 .main {
@@ -10,6 +10,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left:2rem;
+  margin-right:2rem;
 }
 
 .footer {
@@ -19,6 +21,21 @@
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+  margin-left:2rem;
+  margin-right:2rem;
+}
+
+.footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+
+}
+.header {
+  
+  border-bottom: 1px solid #eaeaea;
+  
 }
 
 .footer a {
@@ -27,6 +44,7 @@
   align-items: center;
   flex-grow: 1;
 }
+
 
 .title a {
   color: #0070f3;

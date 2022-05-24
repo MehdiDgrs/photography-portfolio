@@ -1,0 +1,9 @@
+.xmasonry-static {
+  text-align: center;
+  overflow: auto;
+}
+
+.xblock-static {
+  float: left;
+  text-align: left;
+}
