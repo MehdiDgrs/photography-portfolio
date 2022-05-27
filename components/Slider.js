@@ -11,13 +11,13 @@ export default function SimpleSlider() {
     slidesToShow: 1,
     slidesToScroll: 1,
     pauseOnHover:true,
-    autoplay:true,
+    autoplay:false,
     autoplaySpeed:4000,
     className:'w-full h-full',
     fade:true,
     infinite:true,
     swipe:true,
-    arrows:false,
+    arrows:true,
     dots:false,
 
   };
@@ -26,15 +26,7 @@ export default function SimpleSlider() {
       <div className="h-screen ">
         <Image src="/2020-05-05.png" layout="fill" />
       </div>
-      <div className="h-screen ">
-        <Image src="/2020-05-05.png" layout="fill" />
-      </div>
-      <div className="h-screen ">
-        <Image src="/portrait-stock.webp" layout="fill" />
-      </div>
-      <div>
-        
-      </div>
+      
       <div>
        
       </div>

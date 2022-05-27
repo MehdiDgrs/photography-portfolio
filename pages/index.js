@@ -4,6 +4,8 @@ import styles from '../styles/Home.module.css'
 import { XMasonry, XBlock } from 'react-xmasonry'
 import React, { useEffect } from "react";
 import GalleryLayout from '../components/GalleryLayout'
+import Slider from '../components/Slider'
+
 
 import Head from 'next/head'
 
@@ -11,10 +13,22 @@ import Head from 'next/head'
 
 export default function Home(props) {
 
- let [img,setImg] = React.useState(props.data)
-  let list = img.map(image => {
-    return  <XBlock><Image src={image.urls.raw} width={image.width} height={image.height} key={image.id} /></XBlock>
-  })
+  
+
+ let [img,setImg] = React.useState(props.data);
+ let [toggle,settToggle] = React.useState(true)
+
+ let hide = () => { 
+  settToggle(!toggle)
+}
+
+ 
+  let imgList =   img.map(image => {
+      return  <div key={image.id}onClick={hide} className="hover:opacity-60 cursor-pointer"><Image src={image.urls.raw} width={image.width} height={image.height} key={image.id}/></div>
+    })
+    
+ 
+
 
 console.log(img)
   
@@ -28,10 +42,10 @@ console.log(img)
    
    
     
-         <GalleryLayout imgList ={list}/> 
+     { toggle ? <GalleryLayout imgList ={imgList}/>  : <Slider/>}
          
         
-  
+    
      
      </>
 
@@ -43,7 +57,9 @@ console.log(img)
 
 export async function getServerSideProps() {
   const res = await fetch(`https://api.unsplash.com/photos/?client_id=${process.env.UNSPLASH_ACCESS_TOKEN}`) //dont forget to hide env
-  const data = await res.json()
+  const data = await res.json();
+  
+
   return {
     props: {data}, // will be passed to the page component as props
   }

@@ -1,14 +1,24 @@
-import { XMasonry, XBlock } from 'react-xmasonry'
-import styles from './GalleryLayout.module.css' 
+import Masonry from 'react-masonry-css' ;
+import styles from './GalleryLayout.module.css'
+
+export default function GalleryLayout(props) {
+    const breakpointColumnsObj = {
+        default: 3,
+        1100: 3,
+        700: 2,
+        500: 1
+      };
+
+ return (
 
 
-export default function GalleryLayout(props){
-    return (
-        <XMasonry>
-        {props.imgList}
-        </XMasonry>
-   
-     
-      
-      
-)}
+<Masonry
+  breakpointCols={breakpointColumnsObj}
+  className={styles.mymasonrygrid}
+  columnClassName={styles.mymasonrygridcolumn}> 
+  {props.imgList}
+
+</Masonry>
+
+ )
+}
