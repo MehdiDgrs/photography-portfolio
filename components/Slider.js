@@ -3,9 +3,18 @@ import Slider from "react-slick";
 import Image from 'next/image';
 
 
-export default function SimpleSlider() {
+export default function SimpleSlider(props) {
+  console.log(props.id)
+  console.log(props.imgData)
+
+  let filteredArray = props.imgData.filter(imageWithId => {
+   return  imageWithId.id === props.id 
+
+  })
+  console.log(filteredArray)
+
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -13,18 +22,24 @@ export default function SimpleSlider() {
     pauseOnHover:true,
     autoplay:false,
     autoplaySpeed:4000,
-    className:'w-full h-full',
+    className:'w-full h-4/5',
     fade:true,
     infinite:true,
     swipe:true,
-    arrows:true,
+    arrows:false,
     dots:false,
+    centerMode:true,
+    adaptiveHeight:true,
 
   };
   return (
-    <Slider {...settings} className="h-full">
-      <div className="h-screen ">
-        <Image src="/2020-05-05.png" layout="fill" />
+    <Slider {...settings}>
+     
+    
+      <div style={{ position: 'relative'}} className="h-4/5">
+      
+        <Image src={filteredArray[0].urls.raw} width={props.imgData[0].width} height={props.imgData[0].height}layout='raw'
+   /> 
       </div>
       
       <div>

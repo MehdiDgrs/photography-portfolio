@@ -1,11 +1,11 @@
 
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import { XMasonry, XBlock } from 'react-xmasonry'
+
+
 import React, { useEffect } from "react";
 import GalleryLayout from '../components/GalleryLayout'
-import Slider from '../components/Slider'
 
+import SimpleSlider from '../components/Slider';
 
 import Head from 'next/head'
 
@@ -17,20 +17,30 @@ export default function Home(props) {
 
  let [img,setImg] = React.useState(props.data);
  let [toggle,settToggle] = React.useState(true)
-
- let hide = () => { 
+ let [width,setScreenWidth] = React.useState([]);
+ let [currentImg,setCurrentImg] = React.useState([])
+ let hide = (id) => { 
+   
   settToggle(!toggle)
+ 
+  setCurrentImg(id);
+  
 }
-
+useEffect(()=> {
+ 
+  let screenWidth= window.screen.width;
+  setScreenWidth(screenWidth);
+  
+},[])
  
   let imgList =   img.map(image => {
-      return  <div key={image.id}onClick={hide} className="hover:opacity-60 cursor-pointer"><Image src={image.urls.raw} width={image.width} height={image.height} key={image.id}/></div>
+      return  <div key={image.id} onClick={()=> hide(image.id)} className={`${width <800 && 'my-10'} hover:opacity-60 cursor-pointer z-1`}><Image src={image.urls.raw} width={image.width} height={image.height} key={image.id}/></div>
     })
     
  
 
 
-console.log(img)
+
   
   return (
     <>
@@ -39,10 +49,13 @@ console.log(img)
     <meta name="description" content="Portfolio photographe haut de france Lille " />
     <link rel="icon" href="/favicon.ico" />
   </Head>
-   
+  {/*<div className="animate-bounce absolute z-10 m-auto">
+   <BsArrowDownCircle/>
+   </div>
+   */}
    
     
-     { toggle ? <GalleryLayout imgList ={imgList}/>  : <Slider/>}
+     { toggle ? <GalleryLayout imgList ={imgList}/>  : <SimpleSlider id={currentImg} imgData={img}/>}
          
         
     
@@ -54,7 +67,6 @@ console.log(img)
     
   )
 }
-
 export async function getServerSideProps() {
   const res = await fetch(`https://api.unsplash.com/photos/?client_id=${process.env.UNSPLASH_ACCESS_TOKEN}`) //dont forget to hide env
   const data = await res.json();
@@ -64,3 +76,4 @@ export async function getServerSideProps() {
     props: {data}, // will be passed to the page component as props
   }
 }
+

@@ -13,9 +13,7 @@ body {
     
 
 }
-#__next {
- display:flex;
-}
+
 a {
   color: inherit;
   text-decoration: none;
