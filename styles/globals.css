@@ -23,3 +23,8 @@ a {
   box-sizing: border-box;
 }
 
+
+img {
+  max-height: 90vh;
+  max-width: 80%;
+}

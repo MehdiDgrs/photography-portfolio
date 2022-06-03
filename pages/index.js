@@ -16,14 +16,14 @@ export default function Home(props) {
   
 
  let [img,setImg] = React.useState(props.data);
- let [toggle,settToggle] = React.useState(true)
+ let [toggle,setToggle] = React.useState(true)
  let [width,setScreenWidth] = React.useState([]);
- let [currentImg,setCurrentImg] = React.useState([])
+ let [currentImgId,setCurrentImgId] = React.useState([])
  let hide = (id) => { 
    
-  settToggle(!toggle)
+  setToggle(!toggle)
  
-  setCurrentImg(id);
+  setCurrentImgId(id);
   
 }
 useEffect(()=> {
@@ -55,7 +55,7 @@ useEffect(()=> {
    */}
    
     
-     { toggle ? <GalleryLayout imgList ={imgList}/>  : <SimpleSlider id={currentImg} imgData={img}/>}
+     { toggle ? <GalleryLayout imgList ={imgList}/>  : <SimpleSlider id={currentImgId} imgData={img}/>}
          
         
     

@@ -1,53 +1,49 @@
-import React from "react";
-import Slider from "react-slick";
+import React, { useEffect } from "react";
+
 import Image from 'next/image';
 
-
 export default function SimpleSlider(props) {
-  console.log(props.id)
-  console.log(props.imgData)
 
-  let filteredArray = props.imgData.filter(imageWithId => {
-   return  imageWithId.id === props.id 
+ 
 
+   
+  let matchingIdArray = props.imgData.findIndex(element => {
+    return element.id === props.id 
   })
-  console.log(filteredArray)
 
-  var settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    pauseOnHover:true,
-    autoplay:false,
-    autoplaySpeed:4000,
-    className:'w-full h-4/5',
-    fade:true,
-    infinite:true,
-    swipe:true,
-    arrows:false,
-    dots:false,
-    centerMode:true,
-    adaptiveHeight:true,
 
-  };
-  return (
-    <Slider {...settings}>
-     
-    
-      <div style={{ position: 'relative'}} className="h-4/5">
-      
-        <Image src={filteredArray[0].urls.raw} width={props.imgData[0].width} height={props.imgData[0].height}layout='raw'
-   /> 
-      </div>
-      
-      <div>
-       
-      </div>
-      <div>
+let [index,setIndex] = React.useState(matchingIdArray ? matchingIdArray : 0)
+console.log(index)
+
+  let next = () => {    
+  return   setIndex(prev => 
+      {
+      if(prev <props.imgData.length -1 )       {
+       return   prev +1
         
-      </div>
-    </Slider>
-  );
+        }
+        else {
+
+       setIndex(0)
+        }
+    } )
+   
+  }
+ 
+ 
+
+
+  return (
+   
+    
+    <section className="w-full h-screen mx-auto">
+  
+  <div onClick={next}  className=" w-3/4 mx-auto h-screen  ">
+  
+  <Image src={props.imgData[index].urls.raw} width={props.imgData[index].width} height={props.imgData[index].height} quality={100}  /> 
+  </div>
+
+      
+    </section>
+  )
 }
