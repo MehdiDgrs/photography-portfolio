@@ -9,7 +9,7 @@ export default function Layout({children}) {
         
         <Header/>
         
-        <main className="w-full sm:w-4/6 sm:flex-col sm:p-5 md:w-5/6 md:flex-col md:p-5" >{children}</main>
+        <main className="w-full sm:w-4/6  sm:flex-col sm:p-5 md:w-5/6 md:flex-col md:p-5" >{children}</main>
         </div>
        
     )

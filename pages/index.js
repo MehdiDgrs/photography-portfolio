@@ -13,25 +13,26 @@ import Head from 'next/head'
 
 export default function Home(props) {
 
-  
 
  let [img,setImg] = React.useState(props.data);
  let [toggle,setToggle] = React.useState(true)
  let [width,setScreenWidth] = React.useState([]);
  let [currentImgId,setCurrentImgId] = React.useState([])
- let hide = (id) => { 
-   
-  setToggle(!toggle)
- 
-  setCurrentImgId(id);
-  
-}
-useEffect(()=> {
+
+ useEffect(()=> {
  
   let screenWidth= window.screen.width;
   setScreenWidth(screenWidth);
   
-},[])
+},[width]) 
+ let hide = (id) => { 
+   
+ width > 900 && setToggle(!toggle)
+ 
+  setCurrentImgId(id);
+  
+}
+
  
   let imgList =   img.map(image => {
       return  <div key={image.id} onClick={()=> hide(image.id)} className={`${width <800 && 'my-10'} hover:opacity-60 cursor-pointer z-1`}><Image src={image.urls.raw} width={image.width} height={image.height} key={image.id}/></div>
@@ -54,8 +55,10 @@ useEffect(()=> {
    </div>
    */}
    
-    
+
      { toggle ? <GalleryLayout imgList ={imgList}/>  : <SimpleSlider id={currentImgId} imgData={img}/>}
+   
+      
          
         
     
@@ -68,6 +71,8 @@ useEffect(()=> {
   )
 }
 export async function getServerSideProps() {
+
+ 
   const res = await fetch(`https://api.unsplash.com/photos/?client_id=${process.env.UNSPLASH_ACCESS_TOKEN}`) //dont forget to hide env
   const data = await res.json();
   
