@@ -4,8 +4,9 @@ import Image from 'next/image';
 import {AiOutlineArrowLeft,AiOutlineArrowRight} from 'react-icons/ai'
 
 export default function SimpleSlider(props) {
+  let imgHost = "http://localhost:1337"
   let [imageList,setImgList] = React.useState(props.imgData.map(x => {
-    return  <Image ref={imageEl} className={'h-full pointer-events-auto  bg-transparent relative z-0'} key ={x.id} src={x.urls.raw} width={x.width} height={x.height} quality={100} /> 
+    return  <Image ref={imageEl} className={'h-full pointer-events-auto  bg-transparent relative z-0'} key ={x.id} src={imgHost+x.attributes.url} width={x.attributes.width} height={x.attributes.height}  /> 
    
    }))
 

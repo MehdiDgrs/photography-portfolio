@@ -24,6 +24,6 @@ module.exports = {
     },
 },
   images: {
-    domains: ['images.unsplash.com', 'example2.com'],
+    domains: ['images.unsplash.com','localhost'],
   },
 }

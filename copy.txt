@@ -4,8 +4,7 @@ import Image from 'next/image'
 
 import React, { useEffect } from "react";
 import GalleryLayout from '../components/GalleryLayout'
-import { gql } from "@apollo/client";
-import client from "../apollo-client";
+
 import SimpleSlider from '../components/Slider';
 
 import Head from 'next/head'
@@ -15,7 +14,7 @@ import Head from 'next/head'
 export default function Home(props) {
 
 
- let [img,setImg] = React.useState(props.photos.uploadFiles.data);
+ let [img,setImg] = React.useState(props.data);
  let [toggle,setToggle] = React.useState(true)
  let [width,setScreenWidth] = React.useState([]);
  let [currentImgId,setCurrentImgId] = React.useState([])
@@ -33,12 +32,10 @@ console.log(img);
   setCurrentImgId(id);
   
 }
- let imgHost = "http://localhost:1337"
 
+ 
   let imgList =   img.map(image => {
-      return  <div key={image.id} onClick={()=> hide(image.id)} className={`${width <800 && 'my-10'} hover:opacity-60 cursor-pointer z-1`}>
-         <Image src={imgHost+image.attributes.url} width={image.attributes.width} height={image.attributes.height} key={image.id}/>
-       </div>
+      return  <div key={image.id} onClick={()=> hide(image.id)} className={`${width <800 && 'my-10'} hover:opacity-60 cursor-pointer z-1`}><Image src={image.urls.regular} width={image.width} height={image.height} key={image.id}/></div>
     })
     
  
@@ -73,28 +70,15 @@ console.log(img);
     
   )
 }
-export async function getStaticProps() {
-  const { data } = await client.query({
-    query: gql`
-    query UPLOADEDFILES {
-      uploadFiles {
-        data {
-          attributes {
-            caption
-            width
-            height
-            url
-          }
-          id
-        }
-      }
-    }
-    `,
-  });
+export async function getServerSideProps() {
+
+ 
+  const res = await fetch(`https://api.unsplash.com/photos/?client_id=${process.env.UNSPLASH_ACCESS_TOKEN}`) //dont forget to hide env
+  const data = await res.json();
+  
 
   return {
-    props: {
-      photos: data,
-    },
- };
+    props: {data}, // will be passed to the page component as props
+  }
 }
+

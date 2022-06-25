@@ -69,7 +69,8 @@ return (
 </div> 
 <div className={`${toggleNav ? 'visible  transition-all ease-in-out duration-150 h-44' : '  invisible transition-all ease-in-out duration-150 h-0'}   sm:block sm:visible`}>
 <div className="py-5"onClick={ select}><Link href ="/"><a   id = "link-1"className={`hover:opacity-100 opacity-50 text-slate-900 uppercase ${selected ==='link-1' && 'opacity-100 text-slate-900 uppercase '}`}>Gallerie</a></Link></div> 
-<div className="py-5"onClick={ select}> <Link href ="/about"><a id = "link-2" className={`hover:opacity-100 opacity-50 text-slate-900 uppercase ${selected ==='link-2' && 'opacity-100 text-slate-900 uppercase '}`}>A propos de moi</a></Link></div>
+
+<div className="py-5"onClick={ select}> <Link href ="/about"><a id = "link-2" className={`hover:opacity-100 opacity-50 text-slate-900 uppercase ${selected ==='link-2' && 'opacity-100 text-slate-900 uppercase '}`}>A propos </a></Link></div>
 <div className="py-5" onClick ={select }><Link href ="/contact"><a id = "link-3" className="hover:opacity-100 opacity-50 text-slate-900 uppercase">Contact </a></Link></div>
 </div>
 

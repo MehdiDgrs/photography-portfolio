@@ -38,10 +38,8 @@ export default (req,res) => {
       main().catch(console.error);
 
     let {Nom,Prenom,Email,Tel,Message} = req.body;
-    console.log(Nom,Prenom,Email,Tel,Message)
-    
-  res.status(200).json(req.body) ;
-console.log(req.body)
+   res.status(200).json(req.body) ;
+
 
 
   }
