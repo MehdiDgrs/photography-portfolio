@@ -93,7 +93,7 @@ let mailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
          
           <div className="mx-auto md:w-1/3">
             <button className=" shadow bg-slate-900 opacity-60 hover:opacity-90 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit" action="submit">
-              Sign Up
+              Envoyer
             </button>
          
         </div>

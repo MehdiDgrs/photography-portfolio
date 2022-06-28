@@ -57,9 +57,9 @@ return (
 <header id="mobileMenu" className={ `${ windowY !== 0 ?scrolling ? 'hidden' :'z-50 fixed bg-[#ededed]' : ''} w-full sm:flex  p-3 sm:h-screen sm:flex-col  gap-5 font-semibold sm:w-2/6 md:w-1/6 sm:py-8 sm:pl-8 sm:sticky top-0` }>
     <div className="flex">
 <div className="flex w-5/6">
-<a className ="  uppercase text-xl sm:text-2xl sm:mb-5" href='/'><h2 className=" sm:text-left font-bold text-slate-900 ">Degryse Mehdi </h2><div className="flex flex-col "><span className=" font-medium text-lg text-slate-900 opacity-60 hover:opacity-90  sm:text-left">Photographe |</span>
+<a className ="  uppercase text-xl sm:text-2xl sm:mb-5" href='/'><h2 className=" sm:text-left font-bold text-slate-900 ">Degryse Mehdi </h2><div className="flex flex-col "><h1 className=" font-medium text-lg text-slate-900 opacity-60 hover:opacity-90  sm:text-left">Photographe |</h1>
 
-<span className=" font-medium text-lg text-slate-900 opacity-60 hover:opacity-90  sm:text-left"> Developpeur Web</span></div>
+<h1 className=" font-medium text-lg text-slate-900 opacity-60 hover:opacity-90  sm:text-left"> Developpeur Web</h1></div>
 
 </a>
 

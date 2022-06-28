@@ -37,7 +37,8 @@ console.log(img);
 
   let imgList =   img.map(image => {
       return  <div key={image.id} onClick={()=> hide(image.id)} className={`${width <800 && 'my-10'} hover:opacity-60 cursor-pointer z-1`}>
-         <Image src={imgHost+image.attributes.url} width={image.attributes.width} height={image.attributes.height} key={image.id}/>
+        {console.log(image.attributes.width)}
+         <Image   src={imgHost+image.attributes.url} alt="Photo" width={image.attributes.width} height={image.attributes.height} key={image.id}/>
        </div>
     })
     
@@ -49,8 +50,8 @@ console.log(img);
   return (
     <>
     <Head>
-    <title>Mehdi Photographe Portfolio</title>
-    <meta name="description" content="Portfolio photographe haut de france Lille " />
+    <title>Mehdi Degryse  Photographe Developpeur Web Front End Portfolio Lille</title>
+    <meta name="description" content="Portfolio photographe developpeur web front end haut de france Lille " />
     <link rel="icon" href="/favicon.ico" />
   </Head>
   {/*<div className="animate-bounce absolute z-10 m-auto">
