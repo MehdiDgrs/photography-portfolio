@@ -1,5 +1,6 @@
 import React from 'react'
-import { useContext } from 'react'
+import Head from 'next/head'
+
 import LogoSlider from '../components/LogoSlider'
 
 export default function About(props) {
@@ -7,8 +8,12 @@ export default function About(props) {
 
  return (
  
- 
- 
+ <>
+  <Head>
+  <title>Photographe Developpeur Web  Portfolio Lille</title>
+  <meta name="description" content="Portfolio photographe developpeur web front end haut de france Lille " />
+  <link rel="icon" href="/favicon.ico" />
+</Head>
  <section className="flex flex-col mt-9 text-sm md:text-base mb-9">
   <h1 className="mx-auto justify-center text-3xl text-slate-900 "> A propos.</h1>
   <article className="w-2/3 mx-auto mt-16"> J'ai commencé la photographie lors d'un voyage en Nouvelle-Zélande, j'ai tout de suite aimé photographier les differents paysages que je rencontrais dans ce pays, et me suis petit à petit passionné par cet art et tout ce qui l'englobe ( la retouche photo sur Lightroom notamment ). <br/>
@@ -27,6 +32,7 @@ N'hésitez pas à me laisser un message dans la rubrique contact si vous avez un
     
       <LogoSlider/>
       </section>
+      </>
  
      
  )
