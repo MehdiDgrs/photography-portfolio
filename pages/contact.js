@@ -88,7 +88,7 @@ let mailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
           
           
           
-       {status200 && <span className="font-bold text-center mx-auto flex flex-col mb-5" >J'ai bien recu votre message, merci  ! </span>}
+       {status200 && <span className="font-bold text-center mx-auto flex flex-col mb-5" >{`J'ai bien recu votre message, merci  `}! </span>}
       
          
           <div className="mx-auto md:w-1/3">
