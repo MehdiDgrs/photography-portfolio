@@ -6,7 +6,7 @@ import {AiOutlineArrowLeft,AiOutlineArrowRight} from 'react-icons/ai'
 export default function SimpleSlider(props) {
   let imgHost = "http://localhost:1337"
   let [imageList,setImgList] = React.useState(props.imgData.map(x => {
-    return  <Image ref={imageEl} className={'h-full pointer-events-auto  bg-transparent relative z-0'} key ={x.id} src={imgHost+x.attributes.url} width={x.attributes.width} height={x.attributes.height}  /> 
+    return  <Image ref={imageEl} className={'h-full pointer-events-auto  bg-transparent relative z-0'} key ={x.id} src={x.attributes.url} width={x.attributes.width} height={x.attributes.height}  /> 
    
    }))
 
