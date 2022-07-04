@@ -7,7 +7,7 @@ import GalleryLayout from '../components/GalleryLayout'
 import { gql } from "@apollo/client";
 import client from "../apollo-client";
 import SimpleSlider from '../components/Slider';
-
+import { HeaderContext } from './_app';
 import Head from 'next/head'
 
 
@@ -19,7 +19,8 @@ export default function Home(props) {
  let [toggle,setToggle] = React.useState(true)
  let [width,setScreenWidth] = React.useState([]);
  let [currentImgId,setCurrentImgId] = React.useState([])
-
+ let {showGallerie,setShowGallerie} =  React.useContext(HeaderContext)
+let [gallerieState,setGallerieState] = React.useState(showGallerie)
  useEffect(()=> {
  
   let screenWidth= window.screen.width;
@@ -34,16 +35,24 @@ export default function Home(props) {
   
 }
  
-
+console.log(toggle)
   let imgList =   img.map(image => {
-      return  <div key={image.id} onClick={()=> hide(image.id)} className={`${width <800 && 'my-10'} hover:opacity-60 cursor-pointer z-1`}>
-        {console.log(image.attributes.width)}
+      return  <div key={image.id} onClick={()=> {hide(image.id) ; setShowGallerie(false);console.log(toggle)}}  className={`${width <800 && 'my-10'} hover:opacity-60 cursor-pointer z-1`}>
+     
          <Image   src={image.attributes.url} alt="Photo" width={image.attributes.width} height={image.attributes.height} key={image.id}/>
        </div>
     })
     
- 
+ useEffect( () => {
+  let gallerie = document.getElementById('gallerie')
 
+
+
+ }
+
+ , [])
+
+ 
 
 
   
@@ -60,7 +69,7 @@ export default function Home(props) {
    */}
    
 
-     { toggle ? <GalleryLayout imgList ={imgList}/> : <SimpleSlider id={currentImgId} imgData={img}/>}
+     { toggle  ? <GalleryLayout imgList ={imgList}/> : !showGallerie ?  <SimpleSlider id={currentImgId} imgData={img}  /> :setToggle(true) && <GalleryLayout imgList ={imgList}/>}
    
       
          

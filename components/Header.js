@@ -1,12 +1,17 @@
 import Link from 'next/link'
-import  React,{ useState,useEffect } from 'react';
-let Header = () => {
+import  React,{ useState,useEffect, useContext } from 'react';
+import {HeaderContext} from '../pages/_app'
+let Header = (props) => {
     let [toggleNav,setToggleNav] = React.useState(false)
     let [selected,setSelected] = React.useState([]);
     let [isSelected,setIsSelected] = React.useState([]);
     let [style,setStyle] = React.useState([])
+    
     let select = (e) => { setSelected(e.target.id);
+
     }
+
+    
     useEffect(() => {
         setSelected(prev => prev)
          
@@ -16,6 +21,16 @@ let Header = () => {
         setToggleNav(!toggleNav) ;
     }
       
+   let {showGallerie,setShowGallerie} =  React.useContext(HeaderContext)
+   console.log(showGallerie);
+   let changeContext = () => {
+    setShowGallerie(true);
+    console.log(showGallerie)
+        
+}
+
+;
+   
     
         let [windowY ,setWindowY] = React.useState(0)
         let [scrolling,setScrolling] = React.useState(false);
@@ -48,7 +63,7 @@ let Header = () => {
       
     },[windowY,screen])
 
-    console.log(scrolling)
+  
    
 
     
@@ -57,7 +72,7 @@ return (
 <header id="mobileMenu" className={ `${ windowY !== 0 ?scrolling ? 'hidden' :'z-50 fixed bg-[#ededed]' : ''} w-full sm:flex  p-3 sm:h-screen sm:flex-col  gap-5 font-semibold sm:w-2/6 md:w-1/6 sm:py-8 sm:pl-8 sm:sticky top-0` }>
     <div className="flex">
 <div className="flex w-5/6">
-<div className ="  uppercase text-xl sm:text-2xl sm:mb-5" ><Link href ="/"><h2 className=" sm:text-left font-bold text-slate-900 hover:cursor-pointer ">Degryse Mehdi </h2></Link><div className="flex flex-col "><h1 className=" font-medium text-lg text-slate-900 opacity-60 hover:opacity-90  sm:text-left">Photographe |</h1>
+<div className ="  uppercase text-xl sm:text-2xl sm:mb-5" ><Link href ="/"><h2 onClick={changeContext}className=" sm:text-left font-bold text-slate-900 hover:cursor-pointer ">Degryse Mehdi </h2></Link><div className="flex flex-col "><h1 className=" font-medium text-lg text-slate-900 opacity-60 hover:opacity-90  sm:text-left">Photographe |</h1>
 
 <h1 className=" font-medium text-lg text-slate-900 opacity-60 hover:opacity-90  sm:text-left"> Developpeur Web</h1></div>
 
@@ -68,7 +83,7 @@ return (
 <div><p onClick={switchToggleNav}className=" flex-row-reverse sm:hidden hover:text-slate-900 cursor-pointer animate-bounce" >Menu</p></div>
 </div> 
 <div className={`${toggleNav ? 'visible  transition-all ease-in-out duration-150 h-44' : '  invisible transition-all ease-in-out duration-150 h-0'}   sm:block sm:visible`}>
-<div className="py-5"onClick={ select}><Link href ="/"><a   id = "link-1"className={`hover:opacity-100 opacity-50 text-slate-900 uppercase ${selected ==='link-1' && 'opacity-100 text-slate-900 uppercase '}`}>Gallerie</a></Link></div> 
+<div id="gallerie" className="py-5"onClick={function(){ select , changeContext()}}><Link href ="/"><a   id = "link-1"className={`hover:opacity-100 opacity-50 text-slate-900 uppercase ${selected ==='link-1' && 'opacity-100 text-slate-900 uppercase '}`}>Gallerie</a></Link></div> 
 
 <div className="py-5"onClick={ select}> <Link href ="/about"><a id = "link-2" className={`hover:opacity-100 opacity-50 text-slate-900 uppercase ${selected ==='link-2' && 'opacity-100 text-slate-900 uppercase '}`}>A propos </a></Link></div>
 <div className="py-5" onClick ={select }><Link href ="/contact"><a id = "link-3" className="hover:opacity-100 opacity-50 text-slate-900 uppercase">Contact </a></Link></div>

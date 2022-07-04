@@ -4,6 +4,8 @@ import Image from 'next/image';
 import {AiOutlineArrowLeft,AiOutlineArrowRight} from 'react-icons/ai'
 
 export default function SimpleSlider(props) {
+
+  
   let imgHost = "http://localhost:1337"
   let [imageList,setImgList] = React.useState(props.imgData.map(x => {
     return  <Image ref={imageEl} className={'h-full pointer-events-auto  bg-transparent relative z-0'} key ={x.id} src={x.attributes.url} width={x.attributes.width} height={x.attributes.height}  /> 
@@ -24,9 +26,10 @@ export default function SimpleSlider(props) {
   let [windowWidth,setWindowWidth] = React.useState({})
   let [imageWidth,setImageWidth] = React.useState({})
   let navWidth = windowWidth - sectionWidth
-  console.log(navWidth);
+
   useEffect(() => {
-    setSectionWidth(sectionEl.current.offsetWidth)
+    setSectionWidth(document.getElementById('main').offsetWidth);
+    console.log(document.getElementById('main').offsetWidth)
     
   },[])
 
@@ -35,10 +38,9 @@ export default function SimpleSlider(props) {
 
   })
   
-console.log(windowWidth)
-console.log(sectionWidth)
+
 let half = sectionWidth / 2
-console.log(half);
+
 let [index,setIndex] = React.useState(matchingIdArray ? matchingIdArray : 0)
 
 
@@ -91,10 +93,10 @@ const settings = {
     
      
 
-  <div  onMouseMove ={(e)=> {setLeftPosition({x:e.clientX,y:e.clientY});console.log(leftPosition)}} className=" w-3/4  h-5/6 flex justify-center basis-11/12 my-5    " 
+  <div  onMouseMove ={(e)=> {setLeftPosition({x:e.clientX,y:e.clientY})}} className=" w-3/4  h-5/6 flex justify-center basis-11/12 my-5    " 
   onClick={halfClick < half ? previous : next}>
   <div id="slider-layout"  style={{width:sectionWidth}} className="w-3/4 h-full h-max-full z-99 absolute grid grid-cols-2">
-      <div id ="left"  style={{cursor:"none"}}onMouseEnter={()=> {setEnterLeft(true)} } onMouseLeave={()=> {setEnterLeft(false)} } onMouseMove ={(e)=> {setLeftPosition({x:e.clientX,y:e.clientY});console.log(leftPosition)}}
+      <div id ="left"  style={{cursor:"none"}}onMouseEnter={()=> {setEnterLeft(true)} } onMouseLeave={()=> {setEnterLeft(false)} } onMouseMove ={(e)=> {setLeftPosition({x:e.clientX,y:e.clientY})}}
       className="  h-full   z-99 relative  "></div>
         { enterLeft && 
           <AiOutlineArrowLeft 
