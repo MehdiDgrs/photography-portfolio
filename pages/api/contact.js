@@ -19,6 +19,19 @@ export default (req,res) => {
             pass: process.env.SMTP_PASSWORD, 
           },
         });
+
+        await new Promise((resolve, reject) => {
+          // verify connection configuration
+          transporter.verify(function (error, success) {
+              if (error) {
+                  console.log(error);
+                  reject(error);
+              } else {
+                  console.log("Server is ready to take our messages");
+                  resolve(success);
+              }
+          });
+      });
         const mailData = {
           from: 'Mehdigital@outlook.com', // sender address
           to: 'Mehdigital@outlook.com', // list of receivers
@@ -39,7 +52,7 @@ export default (req,res) => {
           }
          }))
       
-        console.log("Message sent: %s", info.messageId);
+       
         // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
       
        
@@ -48,7 +61,7 @@ export default (req,res) => {
       main().catch(console.error);
 
     let {Nom,Prenom,Email,Tel,Message} = req.body;
-   res.status(200).json(req.body) ;
+   res.status(200).json({status:"OK"}) ;
 
 
 
