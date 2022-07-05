@@ -21,12 +21,21 @@ export default function Home(props) {
  let [currentImgId,setCurrentImgId] = React.useState([])
  let {showGallerie,setShowGallerie} =  React.useContext(HeaderContext)
 let [gallerieState,setGallerieState] = React.useState(showGallerie)
+let [scrolling,setScrolling] = React.useState(false)
  useEffect(()=> {
  
   let screenWidth= window.screen.width;
   setScreenWidth(screenWidth);
   
 },[width]) 
+
+useEffect(()=> {
+  window.scrollTo(0, 0)
+},[scrolling])
+  let scrollTop = () => {
+    window.scrollTo(0,0)
+  }
+
  let hide = (id) => { 
    
  width > 900 && setToggle(!toggle)
@@ -39,7 +48,7 @@ console.log(toggle)
   let imgList =   img.map(image => {
       return  <div key={image.id} onClick={()=> {hide(image.id) ; setShowGallerie(false);console.log(toggle)}}  className={`${width <800 && 'my-10'} hover:opacity-60 cursor-pointer z-1`}>
      
-         <Image   src={image.attributes.url} alt="Photo" width={image.attributes.width} height={image.attributes.height} key={image.id}/>
+         <Image  onClick={()=> width>900 && setScrolling(prev=>!prev)}src={image.attributes.url} alt="Photo" width={image.attributes.width} height={image.attributes.height} key={image.id} loading='lazy'/>
        </div>
     })
     

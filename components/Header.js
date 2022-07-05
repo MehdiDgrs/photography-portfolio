@@ -35,26 +35,31 @@ let Header = (props) => {
         let [windowY ,setWindowY] = React.useState(0)
         let [scrolling,setScrolling] = React.useState(false);
         let [screen,setScreen] = React.useState([])
+        let [offSetY,setOffSetY] = React.useState(0)
     useEffect(()=> {
-
+      
         setScreen(window.screen.width);
         console.log(screen)
-
+        console.log(offSetY)
         if (window.screen.width <=800) { 
         
         
         let onScroll = () => {
             let currentPosition = window.pageYOffset;
-            if (currentPosition > windowY) {
+            if (currentPosition  > windowY) {
                 setScrolling(true)
             }
             else {
                 setScrolling(false)
             }
-            setWindowY(currentPosition<=0 ? 0 : currentPosition)
+         
+            setWindowY(currentPosition<=0 ? 0 : currentPosition )
+            console.log(currentPosition)
 
             
         }
+
+      
         window.addEventListener('scroll',onScroll);
         return () => window.removeEventListener("scroll", onScroll);
         
