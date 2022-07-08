@@ -11,7 +11,7 @@ export default (req,res) => {
       
        
         let transporter = await nodemailer.createTransport({
-          host: "smtp-mail.outlook.com",
+          host: "smtp.office365.com",
           port: 587,
           secure: false, // true for 465, false for other ports
           auth: {
@@ -54,7 +54,7 @@ export default (req,res) => {
           }
           else {
             console.log(info)
-            res.status(200).json({status:"OK"}) ;
+            res.send("success") ;
             resolve(info)
           }
          }))
