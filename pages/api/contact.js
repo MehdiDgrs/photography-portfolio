@@ -20,25 +20,7 @@ export default (req,res) => {
           },
         });
 
-        await new Promise((resolve, reject) => {
-          // verify connection configuration
-          transporter.verify(function (error, success) {
-              if (error) {
-                  console.log(error);
-                  reject(error);
-              } else {
-                  console.log("Server is ready to take our messages");
-                  resolve(success);
-              }
-          });
-      });
-        const mailData = {
-          from: 'Mehdigital@outlook.com', // sender address
-          to: 'Mehdigital@outlook.com', // list of receivers
-          subject: "Portfolio PHOTO", // Subject line
-          text: `Name:${Nom} Prenom:${Prenom} Email:${Email} Message:${Message} Tel:${Tel}`, // plain text body
-          html: `<span>Name: ${Nom}</span><br><span>Prenom: ${Prenom}</span><br><span>Email: ${Email}</span><br><span>Message: ${Message}</span></span><br><span>Tel: ${Tel}</span>`, // html body
-        }
+      
         // send mail with defined transport object
         await new Promise((resolve,reject) => 
          transporter.sendMail({
