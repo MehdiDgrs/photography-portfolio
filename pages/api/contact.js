@@ -53,7 +53,8 @@ export default (req,res) => {
             reject(err)
           }
           else {
-            
+            console.log(info)
+            res.status(200).json({status:"OK"}) ;
             resolve(info)
           }
          }))
@@ -67,7 +68,7 @@ export default (req,res) => {
       main().catch(console.error);
 
     let {Nom,Prenom,Email,Tel,Message} = req.body;
-   res.status(200).json({status:"OK"}) ;
+  
 
 
 

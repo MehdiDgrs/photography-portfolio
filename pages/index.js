@@ -48,7 +48,7 @@ console.log(toggle)
   let imgList =   img.map(image => {
       return  <div key={image.id} onClick={()=> {hide(image.id) ; setShowGallerie(false);console.log(toggle)}}  className={`${width <800 && 'my-10'} hover:opacity-60 cursor-pointer z-1`}>
      
-         <Image  onClick={()=> width>900 && setScrolling(prev=>!prev)}src={image.attributes.url} alt="Photo" width={image.attributes.width} height={image.attributes.height} key={image.id} loading='lazy'/>
+         <Image  onClick={()=> width>900 && setScrolling(prev=>!prev)}src={image.attributes.url} alt="Photo" width={image.attributes.width} height={image.attributes.height} key={image.id } loading='lazy'/>
        </div>
     })
     
