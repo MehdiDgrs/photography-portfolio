@@ -24,12 +24,14 @@ let Header = (props) => {
   let [scrolling, setScrolling] = React.useState(false)
   let [screen, setScreen] = React.useState([])
   let [offSetY, setOffSetY] = React.useState(0)
+  
   useEffect(() => {
     setScreen(window.screen.width)
     console.log(screen)
     console.log(offSetY)
     if (window.screen.width <= 800) {
       let onScroll = () => {
+        console.log("pd")
         let currentPosition = window.pageYOffset
         if (currentPosition > windowY) {
           setScrolling(true)
@@ -41,10 +43,10 @@ let Header = (props) => {
         console.log(currentPosition)
       }
 
-      window.addEventListener('scroll', onScroll)
+     (router.pathname === '/about'||router.pathname ==="/contact" ) ?'':window.addEventListener('scroll', onScroll)
       return () => window.removeEventListener('scroll', onScroll)
     }
-  }, [windowY, screen])
+  }, [windowY, screen,router])
 
   return (
     <header
@@ -106,7 +108,7 @@ let Header = (props) => {
                 router.pathname == '/' &&
                 showGallerie === true &&
                 'opacity-100 text-slate-900 uppercase '
-              }`}
+              }`}onClick={()=>setToggleNav(false)}
             >
               Gallerie
             </a>
@@ -121,7 +123,7 @@ let Header = (props) => {
               className={`hover:opacity-100 opacity-50 text-slate-900 uppercase ${
                 router.pathname === '/about' &&
                 'opacity-100 text-slate-900 uppercase '
-              }`}
+              }`}onClick={()=>setToggleNav(false)}
             >
               A propos{' '}
             </a>
@@ -134,7 +136,7 @@ let Header = (props) => {
               className={`hover:opacity-100 opacity-50 text-slate-900 uppercase ${
                 router.pathname === '/contact' &&
                 'opacity-100 text-slate-900 uppercase '
-              }`}
+              }`}onClick={()=>setToggleNav(false)}
             >
               Contact{' '}
             </a>

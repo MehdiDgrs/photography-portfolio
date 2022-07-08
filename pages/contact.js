@@ -23,7 +23,7 @@ export default function Form () {
   }
   try {
   const response = await fetch(endpoint,options);
- if(response.status === 250) {
+ if(response.status === 200) {
   console.log(response);
    setStatus200(true)
  }
