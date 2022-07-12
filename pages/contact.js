@@ -8,6 +8,7 @@ export default function Form () {
   
 
   let [status200,setStatus200] = React.useState(false)
+  let [status404,setStatus404] = React.useState(false)
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit =  async data  => { 
@@ -27,9 +28,13 @@ export default function Form () {
   console.log(response);
    setStatus200(true)
  }
+ else {
+  setStatus404(true)
+ }
   
 } catch(err) {
   console.error(err)
+  
 }
   }
  
@@ -88,8 +93,8 @@ let mailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
           
           
           
-       {status200 && <span className="font-bold text-center mx-auto flex flex-col mb-5" >{`J'ai bien recu votre message, merci  `}! </span>}
-      
+       {status200 && <span className="font-bold text-center mx-auto flex flex-col mb-5" >{`J'ai bien recu votre message, merci ! `}</span>} 
+       {status404 && <span className="font-bold text-center mx-auto flex flex-col mb-5 text-red-600" >{`Erreur lors de l'envois du message `}</span>}
          
           <div className="mx-auto md:w-1/3">
             <button className=" shadow bg-slate-900 opacity-60 hover:opacity-90 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit" action="submit">
