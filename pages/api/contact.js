@@ -8,7 +8,7 @@ export default (req,res) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
   let msg = {
     from: 'meddeg59@gmail.com', // sender address
-    to: 'mehdigital@outlook.com', // list of receivers
+    to: 'meddeg59@gmail.com', // list of receivers
     subject: "Portfolio PHOTO", // Subject line
     text: `Name:${Nom} Prenom:${Prenom} Email:${Email} Message:${Message} Tel:${Tel}`, // plain text body
     html: `<span>Name: ${Nom}</span><br><span>Prenom: ${Prenom}</span><br><span>Email: ${Email}</span><br><span>Message: ${Message}</span></span><br><span>Tel: ${Tel}</span>`, // html body
