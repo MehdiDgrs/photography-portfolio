@@ -145,9 +145,9 @@ let Header = (props) => {
         {!showGallerie && 
         <div className='py-5'>
           <div className="flex space-x-7 justify-start px-2 animate-bounce hover:animate-none">
-          <AiOutlineArrowLeft  
+          <AiOutlineArrowLeft  id='arrowLeft'
           className="font-medium text-lg hover:text-xl cursor-pointer text-slate-900 " /> 
-          <AiOutlineArrowRight  
+          <AiOutlineArrowRight id='arrowRight'  
           className=" font-medium text-lg hover:text-xl cursor-pointer text-slate-900 " /> 
             </div>
 

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import {AiOutlineArrowLeft,AiOutlineArrowRight} from 'react-icons/ai'
 
 export default function SimpleSlider(props) {
-
+  let [galleryState,setGalleryState] = React.useState(null)
   
   let imgHost = "http://localhost:1337"
   let [imageList,setImgList] = React.useState(props.imgData.map(x => {
@@ -18,6 +18,13 @@ export default function SimpleSlider(props) {
   let matchingIdArray = imageList.findIndex(element => {
     return element.key === props.id 
   })
+
+  useEffect(()=> {
+    let arrowLeft = document.getElementById('arrowLeft');
+    let arrowRight = document.getElementById('arrowRight');
+    arrowLeft.addEventListener('click',previous);
+    arrowRight.addEventListener('click',next)
+  },[])
 
   const sectionEl = useRef(null);
   const imageEl = useRef(0)
@@ -96,28 +103,26 @@ const settings = {
   <div  onMouseMove ={(e)=> {setLeftPosition({x:e.clientX,y:e.clientY})}} className=" w-3/4  h-5/6 flex justify-center basis-11/12 my-5    " 
   onClick={halfClick < half ? previous : next}>
   <div id="slider-layout"  style={{width:sectionWidth}} className="w-3/4 h-full h-max-full z-99 absolute grid grid-cols-2">
-      <div id ="left"  style={{cursor:"none"}}onMouseEnter={()=> {setEnterLeft(true)} } onMouseLeave={()=> {setEnterLeft(false)} } onMouseMove ={(e)=> {setLeftPosition({x:e.clientX,y:e.clientY})}}
-      className="  h-full   z-99 relative  "></div>
-        { enterLeft && 
-          <AiOutlineArrowLeft 
-          style={{position:"absolute",top:leftPosition.y+ 'px', left:leftPosition.x-navWidth + 'px' ,zIndex:'99'}}
-          
-          className=" font-medium text-lg text-slate-900  " onClick={previous}/> }
+      <div id ="left"  
+      style={{cursor:"pointer"}}
+        onMouseEnter={()=> {setEnterLeft(true)} }
+       onMouseLeave={()=> {setEnterLeft(false)} } 
+       onMouseMove ={(e)=> {setLeftPosition({x:e.clientX,y:e.clientY})}}
+       onClick={()=> enterLeft && previous}
+      className="  h-full   z-99 relative  " ></div>
+ 
+   
 
-           { enterRight && 
-          <AiOutlineArrowRight
-          style={{position:"absolute",top:leftPosition.y+ 'px', left:leftPosition.x-navWidth + 'px' ,zIndex:'99'}}
-          
-          className=" font-medium text-lg text-slate-900 " onClick={next}/> }
-    
+           
 
 
      
       <div id="right "
-      style={{cursor:"none"}}
+      style={{cursor:"pointer"}}
       onMouseEnter={()=> {setEnterRight(true)} }
        onMouseLeave={()=> {setEnterRight(false)} } 
        onMouseMove ={(e)=> {setLeftPosition({x:e.clientX,y:e.clientY});console.log(leftPosition)}}
+       onClick={()=> enterRight && next}
        className="  h-screen z-0 relative  "></div>
        </div>
      
