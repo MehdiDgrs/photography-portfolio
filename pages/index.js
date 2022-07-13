@@ -97,7 +97,7 @@ export async function getStaticProps() {
   const { data } = await client.query({
     query: gql`
     query UPLOADEDFILES {
-      uploadFiles {
+      uploadFiles(pagination:{ start: 0, limit: 60 }){
         data {
           attributes {
             caption
