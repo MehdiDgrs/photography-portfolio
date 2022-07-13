@@ -31,7 +31,7 @@ let Header = (props) => {
     console.log(offSetY)
     if (window.screen.width <= 800) {
       let onScroll = () => {
-        console.log("pd")
+        
         let currentPosition = window.pageYOffset
         if (currentPosition > windowY) {
           setScrolling(true)
@@ -142,7 +142,7 @@ let Header = (props) => {
             </a>
           </Link>
         </div>
-        {!showGallerie && 
+        {!showGallerie && screen>800 ?
         <div className='py-5'>
           <div className="flex space-x-7 justify-start px-2 animate-bounce hover:animate-none">
           <AiOutlineArrowLeft  id='arrowLeft'
@@ -152,7 +152,7 @@ let Header = (props) => {
             </div>
 
           </div>
-          } 
+          : null} 
       </div>
     </header>
   )
