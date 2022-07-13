@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React, { useState, useEffect, useContext } from 'react'
 import { HeaderContext } from '../pages/_app'
 import { useRouter } from 'next/router'
-
+import {AiOutlineArrowLeft,AiOutlineArrowRight} from 'react-icons/ai'
 let Header = (props) => {
   let [toggleNav, setToggleNav] = React.useState(false)
 
@@ -142,6 +142,17 @@ let Header = (props) => {
             </a>
           </Link>
         </div>
+        {!showGallerie && 
+        <div className='py-5'>
+          <div className="flex space-x-7 justify-start px-2 animate-bounce hover:animate-none">
+          <AiOutlineArrowLeft  
+          className="font-medium text-lg hover:text-xl cursor-pointer text-slate-900 " /> 
+          <AiOutlineArrowRight  
+          className=" font-medium text-lg hover:text-xl cursor-pointer text-slate-900 " /> 
+            </div>
+
+          </div>
+          } 
       </div>
     </header>
   )

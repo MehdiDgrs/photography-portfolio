@@ -1,7 +1,7 @@
 
 import {useForm} from 'react-hook-form';
 import React from 'react';
-
+import { ThreeDots } from  'react-loader-spinner'
 
 export default function Form () {
 
@@ -9,9 +9,11 @@ export default function Form () {
 
   let [status200,setStatus200] = React.useState(false)
   let [status404,setStatus404] = React.useState(false)
-
+  let [loading,setLoading] = React.useState(false)
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const onSubmit =  async data  => { 
+    
+    setLoading(true)
   const JSONdata = JSON.stringify(data);
   const endpoint = '/api/contact';
   const options = {
@@ -25,8 +27,9 @@ export default function Form () {
   try {
   const response = await fetch(endpoint,options);
  if(response.status === 200) {
-  console.log(response);
+ 
    setStatus200(true)
+   setLoading(false)
  }
  else {
   setStatus404(true)
@@ -97,10 +100,10 @@ let mailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
        {status404 && <span className="font-bold text-center mx-auto flex flex-col mb-5 text-red-600" >{`Erreur lors de l'envois du message `}</span>}
          
           <div className="mx-auto md:w-1/3">
-            <button className=" shadow bg-slate-900 opacity-60 hover:opacity-90 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit" action="submit">
+           {loading ? <ThreeDots color="#000000" height={80} width={80} />:<button className=" shadow bg-slate-900 opacity-60 hover:opacity-90 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit" action="submit">
               Envoyer
-            </button>
-         
+            </button> }
+            
         </div>
       </form>
       </section>
