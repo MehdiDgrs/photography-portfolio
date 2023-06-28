@@ -40,9 +40,10 @@ export default function About(props) {
             {" "}
             Bonjour et bienvenue, je suis Degryse Mehdi, un photographe
             professionnel basé à Lille, spécialisé dans la photographie
-            d'événements, de produits et de mariages. Mon voyage photographique
-            a commencé en Nouvelle-Zélande, où j'ai découvert ma passion pour
-            capturer l'essence des moments uniques à travers l'objectif.
+            d&apos;événements, de produits et de mariages. Mon voyage
+            photographique a commencé en Nouvelle-Zélande, où j&apos;ai
+            découvert ma passion pour capturer l'essence des moments uniques à
+            travers l&apos;objectif.
           </p>
         </article>
         <article className="w-2/3 mx-auto mt-8">
@@ -50,11 +51,11 @@ export default function About(props) {
             Photographie d'événements à Lille
           </h2>
           <p>
-            En tant que photographe d'événements, j'ai l'œil pour capter
-            l'excitation et l'énergie, créant des souvenirs visuels qui dureront
-            longtemps après la fin de l'événement. J'ai travaillé avec des
-            organisations sportives et des entreprises, capturant l'essence de
-            leurs événements.
+            En tant que photographe d&apos;événements, j&apos;ai l&apos;œil pour
+            capter l&apos;excitation et l&apos;énergie, créant des souvenirs
+            visuels qui dureront longtemps après la fin de l&apos;événement.
+            J&apos;ai travaillé avec des organisations sportives et des
+            entreprises, capturant l&apos;essence de leurs événements.
           </p>
         </article>
         <article className="w-2/3 mx-auto mt-8">
@@ -63,10 +64,10 @@ export default function About(props) {
           </h2>
           <p>
             Aider les marques à se développer à travers la photographie de
-            produits est une autre facette de mon travail que j'adore. J'aide
-            les entreprises à créer des images de produits percutantes et
-            attrayantes qui attirent l'attention des clients et augmentent les
-            ventes.
+            produits est une autre facette de mon travail que j&apos;adore.
+            J&apos;aide les entreprises à créer des images de produits
+            percutantes et attrayantes qui attirent l&apos;attention des clients
+            et augmentent les ventes.
           </p>
         </article>
         <article className="w-2/3 mx-auto mt-8">
@@ -75,8 +76,8 @@ export default function About(props) {
           </h2>
           <p>
             Je trouve également un grand plaisir à photographier les mariages.
-            Capturer la joie, l'amour et les moments spéciaux d'un mariage est
-            un véritable privilège.{" "}
+            Capturer la joie, l&apos;amour et les moments spéciaux d'un mariage
+            est un véritable privilège.{" "}
           </p>
         </article>
 
@@ -84,7 +85,7 @@ export default function About(props) {
           <p>
             Si vous êtes à Lille ou dans ses environs et que vous cherchez un
             photographe dévoué avec une vision artistique pour vos événements,
-            produits ou mariage, n'hésitez pas à me contacter.
+            produits ou mariage, n&apos;hésitez pas à me contacter.
           </p>
         </article>
       </section>

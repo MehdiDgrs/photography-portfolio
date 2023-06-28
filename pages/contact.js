@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import React from "react";
-// import { ThreeDots } from  'react-loader-spinner'
 
 export default function Form() {
   let [status200, setStatus200] = React.useState(false);
