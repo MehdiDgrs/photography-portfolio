@@ -42,13 +42,13 @@ export default function About(props) {
             professionnel basé à Lille, spécialisé dans la photographie
             d&apos;événements, de produits et de mariages. Mon voyage
             photographique a commencé en Nouvelle-Zélande, où j&apos;ai
-            découvert ma passion pour capturer l'essence des moments uniques à
-            travers l&apos;objectif.
+            découvert ma passion pour capturer l&apos;essence des moments
+            uniques à travers l&apos;objectif.
           </p>
         </article>
         <article className="w-2/3 mx-auto mt-8">
           <h2 className="mb-2 text-lg font-semibold">
-            Photographie d'événements à Lille
+            Photographie d&apos;événements à Lille
           </h2>
           <p>
             En tant que photographe d&apos;événements, j&apos;ai l&apos;œil pour
@@ -76,8 +76,8 @@ export default function About(props) {
           </h2>
           <p>
             Je trouve également un grand plaisir à photographier les mariages.
-            Capturer la joie, l&apos;amour et les moments spéciaux d'un mariage
-            est un véritable privilège.{" "}
+            Capturer la joie, l&apos;amour et les moments spéciaux d&apos;un
+            mariage est un véritable privilège.{" "}
           </p>
         </article>
 

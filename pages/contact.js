@@ -127,7 +127,7 @@ export default function Form() {
         )}
 
         <div className="mx-auto md:w-1/3">
-          {loading ? (
+          {/* {loading ? (
             <ThreeDots color="#000000" height={80} width={80} />
           ) : (
             <button
@@ -137,7 +137,7 @@ export default function Form() {
             >
               Envoyer
             </button>
-          )}
+          )} */}
         </div>
       </form>
     </section>
