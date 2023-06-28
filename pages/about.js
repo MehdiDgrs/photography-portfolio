@@ -1,54 +1,93 @@
-import React from 'react'
-import Head from 'next/head'
+import React from "react";
+import Head from "next/head";
+import Image from "next/image";
 
-import LogoSlider from '../components/LogoSlider'
+import LogoSlider from "../components/LogoSlider";
 
 export default function About(props) {
   return (
     <>
       <Head>
-        <title>Photographe Developpeur Web Portfolio Lille</title>
+        <title>
+          Photographe polyvalent à Lille pour toutes vos occasions | Degryse
+          Mehdi
+        </title>
         <meta
-          name='description'
-          content='Portfolio photographe developpeur web front end haut de france Lille '
-        />
-        <link rel='icon' href='/favicon.ico' />
+          name="description"
+          content="Découvrez Degryse Mehdi, photographe polyvalent à Lille, prêt à capturer des images inoubliables pour toutes vos occasions. Spécialisé en événements, produits de marques et mariages, tout en restant ouvert à d'autres styles."
+        ></meta>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className='flex flex-col mt-9 text-sm md:text-base mb-9'>
-        <h1 className='mx-auto justify-center text-3xl text-slate-900 '>
-          {' '}
-          A propos.
+      <section className="flex flex-col mt-9 text-sm md:text-base mb-9">
+        <h1 className="mb-2 text-lg font-semibold mx-auto">
+          {" "}
+          Degryse Mehdi : Photographe polyvalent à Lille pour toutes vos
+          occasions
         </h1>
-        <article className='w-2/3 mx-auto mt-16'>
-          {' '}
-          J‘ai commencé la photographie lors d‘un voyage en Nouvelle-Zélande,
-          j‘ai tout de suite aimé photographier les differents paysages que je
-          rencontrais dans ce pays, et me suis petit à petit passionné par cet
-          art et tout ce qui l‘englobe ( la retouche photo sur Lightroom
-          notamment ). <br />
-          Etant passionné de boxe Thailandaise et de musique, j‘ai par la suite
-          lié l‘utile à l‘agréable en photographiant des galas de boxe ainsi que
-          des concerts.
+        <div className="mx-auto w-2/4 mt-6 rounded-lg overflow-hidden">
+          <Image
+            src="https://res.cloudinary.com/deoh6bmf7/image/upload/v1687963952/PIC01082_pvdm0m.webp" // remplacer par l'URL de votre image
+            alt="Degryse Mehdi Photographe Lille" // remplacer par un texte alternatif approprié pour l'image
+            width={500} // remplacer par la largeur désirée
+            height={300} // remplacer par la hauteur désirée
+          />
+        </div>
+        <article className="w-2/3 mx-auto mt-8">
+          <h2 className="mb-2 text-lg font-semibold">
+            Mon parcours en tant que photographe
+          </h2>
+          <p>
+            {" "}
+            Bonjour et bienvenue, je suis Degryse Mehdi, un photographe
+            professionnel basé à Lille, spécialisé dans la photographie
+            d'événements, de produits et de mariages. Mon voyage photographique
+            a commencé en Nouvelle-Zélande, où j'ai découvert ma passion pour
+            capturer l'essence des moments uniques à travers l'objectif.
+          </p>
         </article>
-        <article className='w-2/3 mx-auto mt-6'>
-          La photographie n‘est pour l‘instant qu‘un hobby dans ma vie, je suis
-          développeur web de profession, le but de ce portfolio est de stocker
-          sur une plateforme les differentes photos que j‘ai pu prendre, tout en
-          me formant aux nouveaux languages de programmation à la pointe,le
-          developpement web etant un secteur qui évolue très rapidement.
+        <article className="w-2/3 mx-auto mt-8">
+          <h2 className="mb-2 text-lg font-semibold">
+            Photographie d'événements à Lille
+          </h2>
+          <p>
+            En tant que photographe d'événements, j'ai l'œil pour capter
+            l'excitation et l'énergie, créant des souvenirs visuels qui dureront
+            longtemps après la fin de l'événement. J'ai travaillé avec des
+            organisations sportives et des entreprises, capturant l'essence de
+            leurs événements.
+          </p>
         </article>
-        <article className='w-2/3 mx-auto mt-6'>
-          N‘hésitez pas à me laisser un message dans la rubrique contact si vous
-          avez un projet que ce soit dans la photographie ou dans le web je me
-          ferai un plaisir de vous répondre.
+        <article className="w-2/3 mx-auto mt-8">
+          <h2 className="mb-2 text-lg font-semibold">
+            Photographie de produits pour les marques
+          </h2>
+          <p>
+            Aider les marques à se développer à travers la photographie de
+            produits est une autre facette de mon travail que j'adore. J'aide
+            les entreprises à créer des images de produits percutantes et
+            attrayantes qui attirent l'attention des clients et augmentent les
+            ventes.
+          </p>
         </article>
-        <h1 className='mx-auto justify-center mt-10 text-lg text-slate-900 '>
-          {' '}
-          Technologies utilisées :{' '}
-        </h1>
+        <article className="w-2/3 mx-auto mt-8">
+          <h2 className="mb-2 text-lg font-semibold">
+            Photographie de mariage à Lille
+          </h2>
+          <p>
+            Je trouve également un grand plaisir à photographier les mariages.
+            Capturer la joie, l'amour et les moments spéciaux d'un mariage est
+            un véritable privilège.{" "}
+          </p>
+        </article>
 
-        <LogoSlider />
+        <article className="w-2/3 mx-auto mt-16">
+          <p>
+            Si vous êtes à Lille ou dans ses environs et que vous cherchez un
+            photographe dévoué avec une vision artistique pour vos événements,
+            produits ou mariage, n'hésitez pas à me contacter.
+          </p>
+        </article>
       </section>
     </>
-  )
+  );
 }
