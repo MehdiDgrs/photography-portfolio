@@ -16,10 +16,12 @@ export default function About(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className=" flex flex-col mt-9 text-sm md:text-base mb-9">
-        <h1 className="  mb-2  uppercase text-xl sm:text-2xl font-bold text-slate-900 hover:cursor-pointer mx-auto">
-          {" "}
-          Degryse Mehdi : Photographe polyvalent à Lille
-        </h1>
+        <article className="w-2/3 mx-auto mt-8">
+          <h1 className="  mb-2  uppercase text-xl sm:text-2xl font-bold text-slate-900 hover:cursor-pointer mx-auto">
+            {" "}
+            Degryse Mehdi : Photographe polyvalent à Lille
+          </h1>
+        </article>
         <div className="mx-auto w-2/4 mt-6 rounded-lg overflow-hidden">
           <Image
             src="https://res.cloudinary.com/deoh6bmf7/image/upload/v1687963952/PIC01082_pvdm0m.webp" // remplacer par l'URL de votre image

@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import React from "react";
-
+import { BsThreeDots } from "react-icons/bs";
 export default function Form() {
   let [status200, setStatus200] = React.useState(false);
   let [status404, setStatus404] = React.useState(false);
@@ -127,17 +127,20 @@ export default function Form() {
         )}
 
         <div className="mx-auto md:w-1/3">
-          {/* {loading ? (
-            <ThreeDots color="#000000" height={80} width={80} />
+          {loading ? (
+            // <BsThreeDots color="#000000" height={80} width={80} />
+            <BsThreeDots />
           ) : (
             <button
-              className=" shadow bg-slate-900 opacity-60 hover:opacity-90 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+              className={` ${
+                status200 && "hidden"
+              }  shadow bg-slate-900 opacity-60 hover:opacity-90 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded`}
               type="submit"
               action="submit"
             >
               Envoyer
             </button>
-          )} */}
+          )}
         </div>
       </form>
     </section>
