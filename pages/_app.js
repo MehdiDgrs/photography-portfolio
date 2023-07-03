@@ -1,6 +1,6 @@
 import "../styles/globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
-import { createContext } from "react";
 import React from "react";
 import Layout from "../components/Layout";
 
@@ -13,6 +13,7 @@ function MyApp({ Component, pageProps }) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      <Analytics />
     </HeaderContext.Provider>
   );
 }
