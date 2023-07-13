@@ -12,9 +12,19 @@ export default function Form() {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
-    setLoading(true);
-    const JSONdata = JSON.stringify(data);
-    const endpoint = "/api/contact";
+    console.log(data);
+    // setLoading(true);
+    const JSONdata = JSON.stringify({
+      data: {
+        name: data.Nom,
+        surname: data.Prenom,
+        email: data.Email,
+        text: data.Message,
+        tel: data.Tel,
+      },
+    });
+    const endpoint =
+      "https://portfolio-backend-photography.herokuapp.com/api/contacts";
     const options = {
       method: "POST",
       headers: {
@@ -24,6 +34,9 @@ export default function Form() {
     };
     try {
       const response = await fetch(endpoint, options);
+      const result = await response.json();
+      console.log(response.status);
+
       if (response.status === 200) {
         setStatus200(true);
         setLoading(false);
