@@ -36,6 +36,8 @@ export default function Home(props) {
 
   console.log(toggle);
   let imgList = img.map((image) => {
+    let publicId = image.attributes.url.split("/").pop().split(".")[0];
+    let optimizedUrl = `https://res.cloudinary.com/deoh6bmf7/image/upload/q_auto,f_auto/${publicId}.jpg`;
     return (
       <div
         key={image.id}
@@ -48,7 +50,7 @@ export default function Home(props) {
       >
         <Image
           onClick={() => width > 900 && setScrolling((prev) => !prev)}
-          src={image.attributes.url}
+          src={optimizedUrl}
           alt={image.attributes.alternativeText}
           width={image.attributes.width}
           height={image.attributes.height}
