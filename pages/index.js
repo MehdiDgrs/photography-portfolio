@@ -55,7 +55,6 @@ export default function Home(props) {
           width={image.attributes.width}
           height={image.attributes.height}
           key={image.id}
-          loading="lazy"
         />
       </div>
     );
