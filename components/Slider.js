@@ -1,32 +1,33 @@
 import React, { useEffect } from "react";
 import { useRef } from "react";
 import Image from "next/image";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 export default function SimpleSlider(props) {
   let [galleryState, setGalleryState] = React.useState(null);
-
-  let imgHost = "http://localhost:1337";
-  let [imageList, setImgList] = React.useState(
-    props.imgData.map((x) => {
-      console.log(x.attributes);
+  let [index, setIndex] = React.useState(0);
+  let [imageList, setImgList] = React.useState([]);
+  const updateImageList = (currentIndex) => {
+    return props.imgData.map((x, i) => {
       return (
         <Image
-          ref={imageEl}
-          className={"h-full pointer-events-auto  bg-transparent relative z-0"}
+          className={"h-full pointer-events-auto bg-transparent relative z-0"}
           key={x.id}
           src={x.attributes.url}
           width={x.attributes.width}
           height={x.attributes.height}
           alt={x.attributes.caption}
+          loading={
+            i >= currentIndex - 1 && i <= currentIndex + 1 ? "eager" : "lazy"
+          } // Load only the current, next, and previous images eagerly
         />
       );
-    })
-  );
+    });
+  };
 
-  let matchingIdArray = imageList.findIndex((element) => {
-    return element.key === props.id;
-  });
+  // Initialize image list
+  useEffect(() => {
+    setImgList(updateImageList(index));
+  }, [props.imgData]);
 
   useEffect(() => {
     let arrowLeft = document.getElementById("arrowLeft");
@@ -54,8 +55,6 @@ export default function SimpleSlider(props) {
 
   let half = sectionWidth / 2;
 
-  let [index, setIndex] = React.useState(matchingIdArray ? matchingIdArray : 0);
-
   const settings = {
     dots: true,
     infinite: true,
@@ -63,27 +62,22 @@ export default function SimpleSlider(props) {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-
   let next = () => {
-    return setIndex((prev) => {
-      if (prev < props.imgData.length - 1) {
-        return prev + 1;
-      } else {
-        return 0;
-      }
+    setIndex((prev) => {
+      let nextIndex = prev < props.imgData.length - 1 ? prev + 1 : 0;
+      setImgList(updateImageList(nextIndex)); // Update the image list when the index changes
+      return nextIndex;
     });
   };
 
   let previous = () => {
-    return setIndex((prev) => {
-      if (prev > 0) {
-        return prev - 1;
-      } else {
-        return props.imgData.length - 1;
-      }
+    setIndex((prev) => {
+      let previousIndex = prev > 0 ? prev - 1 : props.imgData.length - 1;
+      setImgList(updateImageList(previousIndex)); // Update the image list when the index changes
+      return previousIndex;
     });
   };
-
+  // ...
   let [enterLeft, setEnterLeft] = React.useState(false);
   let [enterRight, setEnterRight] = React.useState(false);
   let [leftPosition, setLeftPosition] = React.useState([]);
