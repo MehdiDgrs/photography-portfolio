@@ -1,0 +1,6 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+Sitemap : https://www.mehdidegryse-photographe-lille.com/sitemap.xml
+Sitemap : https://mehdidegryse-photographe-lille.com/sitemap.xml
