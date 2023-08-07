@@ -82,7 +82,7 @@ let Header = (props) => {
         <div>
           <p
             onClick={switchToggleNav}
-            className=" flex-row-reverse sm:hidden hover:text-slate-900 cursor-pointer animate-bounce"
+            className=" flex-row-reverse sm:hidden hover:text-slate-900 cursor-pointer "
           >
             Menu
           </p>
@@ -146,7 +146,7 @@ let Header = (props) => {
             </a>
           </Link>
         </div>
-        {!showGallerie && screen > 800 ? (
+        {/* {!showGallerie && screen > 800 ? (
           <div className="py-5">
             <div className="flex space-x-7 justify-start px-2 animate-bounce hover:animate-none">
               <AiOutlineArrowLeft
@@ -159,7 +159,7 @@ let Header = (props) => {
               />
             </div>
           </div>
-        ) : null}
+        ) : null} */}
       </div>
     </header>
   );

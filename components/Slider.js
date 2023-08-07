@@ -8,11 +8,14 @@ export default function SimpleSlider(props) {
   let [imageList, setImgList] = React.useState([]);
   const updateImageList = (currentIndex) => {
     return props.imgData.map((x, i) => {
+      let publicId = x.attributes.url.split("/").pop().split(".")[0];
+      let optimizedUrl = `https://res.cloudinary.com/deoh6bmf7/image/upload/q_auto,f_auto/large_${publicId}.jpg`;
+
       return (
         <Image
           className={"h-full pointer-events-auto bg-transparent relative z-0"}
           key={x.id}
-          src={x.attributes.url}
+          src={optimizedUrl}
           width={x.attributes.width}
           height={x.attributes.height}
           alt={x.attributes.caption}
