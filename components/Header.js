@@ -2,7 +2,7 @@ import Link from "next/link";
 import React, { useState, useEffect, useContext } from "react";
 import { HeaderContext } from "../pages/_app";
 import { useRouter } from "next/router";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+
 let Header = (props) => {
   let [toggleNav, setToggleNav] = React.useState(false);
 
@@ -11,13 +11,13 @@ let Header = (props) => {
   let switchToggleNav = () => {
     setToggleNav(!toggleNav);
   };
+
   let router = useRouter();
 
   let { showGallerie, setShowGallerie } = React.useContext(HeaderContext);
-  console.log(showGallerie);
+  
   let changeContext = () => {
     setShowGallerie(true);
-    console.log(showGallerie);
   };
 
   let [windowY, setWindowY] = React.useState(0);
@@ -27,8 +27,6 @@ let Header = (props) => {
 
   useEffect(() => {
     setScreen(window.screen.width);
-    console.log(screen);
-    console.log(offSetY);
     if (window.screen.width <= 800) {
       let onScroll = () => {
         let currentPosition = window.pageYOffset;
@@ -39,7 +37,6 @@ let Header = (props) => {
         }
 
         setWindowY(currentPosition <= 0 ? 0 : currentPosition);
-        console.log(currentPosition);
       };
 
       router.pathname === "/about" || router.pathname === "/contact"
@@ -102,65 +99,9 @@ let Header = (props) => {
             changeContext();
           }}
         >
-          <Link href="/">
-            <a
-              id="link-1"
-              className={`hover:opacity-100 opacity-50 text-slate-900 uppercase ${
-                router.pathname == "/" &&
-                showGallerie === true &&
-                "opacity-100 text-slate-900 uppercase "
-              }`}
-              onClick={() => setToggleNav(false)}
-            >
-              Galerie
-            </a>
-          </Link>
+        
         </div>
-
-        <div className="py-5">
-          {" "}
-          <Link href="/about">
-            <a
-              id="link-2"
-              className={`hover:opacity-100 opacity-50 text-slate-900 uppercase ${
-                router.pathname === "/about" &&
-                "opacity-100 text-slate-900 uppercase "
-              }`}
-              onClick={() => setToggleNav(false)}
-            >
-              A propos{" "}
-            </a>
-          </Link>
         </div>
-        <div className="py-5">
-          <Link href="/contact">
-            <a
-              id="link-3"
-              className={`hover:opacity-100 opacity-50 text-slate-900 uppercase ${
-                router.pathname === "/contact" &&
-                "opacity-100 text-slate-900 uppercase "
-              }`}
-              onClick={() => setToggleNav(false)}
-            >
-              Contact{" "}
-            </a>
-          </Link>
-        </div>
-        {/* {!showGallerie && screen > 800 ? (
-          <div className="py-5">
-            <div className="flex space-x-7 justify-start px-2 animate-bounce hover:animate-none">
-              <AiOutlineArrowLeft
-                id="arrowLeft"
-                className="font-medium text-lg hover:text-xl cursor-pointer text-slate-900 "
-              />
-              <AiOutlineArrowRight
-                id="arrowRight"
-                className=" font-medium text-lg hover:text-xl cursor-pointer text-slate-900 "
-              />
-            </div>
-          </div>
-        ) : null} */}
-      </div>
     </header>
   );
 };
